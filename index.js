@@ -6,6 +6,9 @@ const connection = require("./database/database");
 // importando as rotas de controle
 const categoriesController = require("./categories/categoriesController");
 const articlesController = require("./articles/articlesController");
+//importanto os models
+const Category = require("./categories/Category");
+const Article = require("./articles/articles");
 
 // view engine
 app.set("view engine", "ejs");
@@ -24,6 +27,18 @@ connection
     }).catch((error) => {
         console.log(error);
     });
+
+//sincronizando os modelos com o banco de dados
+async function syncModels() {
+    try {
+        await Category.sync();
+        await Article.sync();
+        console.log("modelos soncronizados com sucesso!");
+    } catch (error) {
+        console.log("Erro na sincronização com o banco de dados: \n" + error);
+    }
+};
+syncModels();
 
 app.use("/", categoriesController);
 app.use("/", articlesController);

@@ -1,6 +1,8 @@
 const Sequelize =require("sequelize");
 const connection = require("../database/database");
+const Category = require("../categories/Category");
 
+//modelo que representa a tabela Article no BD
 const Article = connection.define("articles", {
     title: {
         type: Sequelize.STRING,
@@ -15,5 +17,8 @@ const Article = connection.define("articles", {
         allowNull: false
     }
 });
+
+Category.hasMany(Article); // Uma categoria tem muitos artigos
+Article.belongsTo(Category); // Um artigo pertence a uma categoria
 
 module.exports = Article;
