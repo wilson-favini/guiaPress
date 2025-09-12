@@ -16,9 +16,9 @@ app.set("view engine", "ejs");
 //para reconhecer arquivos staticos
 app.use(express("public"));
 
-//body parser
-app.use(bodyparser.urlencoded({extended: false}));
-app.use(bodyparser.json());
+//body parser/express
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //Banco de dados
 connection
