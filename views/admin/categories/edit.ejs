@@ -1,0 +1,21 @@
+<%- include("../../partials/header"); -%>
+    <%- include("../../partials/navBar"); -%>
+
+        <div class="container">
+
+
+
+            <h2>Edição de categoria</h2>
+
+
+            <form action="/categories/save" method="POST">
+                <div class="mb-3">
+
+                    <input type="text" name="title" class="form-control" value="<%= category.title %>" placeholder="Nome da categoria">
+                    <br>
+                    <button class="btn btn-sucess">Atualizar</button>
+                </div>
+            </form>
+
+
+        </div>
