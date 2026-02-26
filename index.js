@@ -14,7 +14,7 @@ const Article = require("./articles/articles");
 app.set("view engine", "ejs");
 
 //para reconhecer arquivos staticos
-app.use(express("public"));
+app.use(express.static("public"));
 
 //body parser/express
 app.use(express.urlencoded({extended: false}));
